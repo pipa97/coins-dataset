@@ -25,3 +25,6 @@ weights/
 *.tmp
 *.log
 *.cache
+
+# 图片已移至 Release 压缩包分发
+images/

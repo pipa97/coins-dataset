@@ -10,6 +10,8 @@
 
 三分类硬币目标检测数据集，YOLO 标注格式，可直接用于 YOLOv5 / YOLOv8 / YOLOv11 等框架训练。
 
+> 📦 **完整数据集请到 [Releases](https://github.com/pipa97/coins-dataset/releases/latest) 下载 `coins-dataset-v1.0.zip`**（约 161 MB），解压即用，无需 Git LFS。
+
 ## 数据集概览
 
 | 项目 | 数值 |
@@ -21,7 +23,8 @@
 | 标注文件 | 245（与图片一一对应） |
 | 图片格式 | JPG |
 | 标注格式 | YOLO txt（`class x_center y_center width height`，归一化到 0~1） |
-| 数据集体积 | 约 161 MB |
+| 数据集体积 | 约 161 MB（zip 压缩包） |
+| 下载方式 | [Releases 下载 zip](https://github.com/pipa97/coins-dataset/releases/latest) |
 
 ## 类别
 
@@ -33,6 +36,8 @@
 
 ## 目录结构
 
+**Release 压缩包内（完整数据集）：**
+
 ```
 coins-dataset/
 ├── images/
@@ -43,9 +48,22 @@ coins-dataset/
 │   └── val/            # 49 个验证标签 + classes.txt
 ├── classes.txt         # 类别名列表
 ├── data.yaml           # YOLO 数据集配置
-├── .gitattributes      # Git LFS 规则
 └── README.md
 ```
+
+**Git 仓库内（仅文本内容）：**
+
+```
+coins-dataset/
+├── labels/             # 全部标签文件
+├── classes.txt
+├── data.yaml
+├── README.md
+├── .gitattributes
+└── .gitignore
+```
+
+> 图片体积较大，已移至 Release 压缩包分发，仓库中仅保留标签、配置与文档，以节省存储与带宽。
 
 ## 标注格式说明
 
@@ -63,16 +81,39 @@ coins-dataset/
 
 ## 使用方法
 
-### 1. 克隆仓库（需要 Git LFS）
+### 方式一：下载 Release 压缩包（推荐 ⭐）
+
+最简单，**不需要安装 Git、不需要 Git LFS、不需要联网克隆**。
+
+1. 打开 [Releases 页面](https://github.com/pipa97/coins-dataset/releases/latest)
+2. 下载 `coins-dataset-v1.0.zip`（约 161 MB）
+3. 解压到任意目录，得到 `coins-dataset/` 文件夹
+4. 解压后即可直接用于训练
+
+```
+coins-dataset/
+├── images/train/    # 196 张
+├── images/val/      # 49 张
+├── labels/train/    # 196 个
+├── labels/val/      # 49 个
+├── classes.txt
+├── data.yaml
+└── README.md
+```
+
+> 💡 压缩包内已包含全部图片与标签，开箱即用。这是**最推荐**的方式。
+
+### 方式二：从仓库克隆
+
+仓库中仅包含**标签文件、配置文件与文档**，图片已移至 Release 压缩包，以节省存储与带宽。
 
 ```bash
-git lfs install
 git clone https://github.com/pipa97/coins-dataset.git
 ```
 
-> 图片通过 Git LFS 存储，克隆前务必先安装 Git LFS，否则只能拿到指针文件。
+克隆后需再下载 Release 中的 zip，将 `images/` 目录解压到仓库根目录下。
 
-### 2. 用 YOLO 训练
+### 用 YOLO 训练
 
 `data.yaml` 中的 `path` 字段需改为你本地的数据集路径：
 
