@@ -1,0 +1,8 @@
+path: ./coins-dataset
+train: images/train
+val: images/val
+
+names:
+  0: wujiao
+  1: yijiao
+  2: yiyuan

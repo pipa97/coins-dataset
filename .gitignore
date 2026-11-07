@@ -1,0 +1,27 @@
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# 训练产物
+runs/
+weights/
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# 临时文件
+*.tmp
+*.log
+*.cache
